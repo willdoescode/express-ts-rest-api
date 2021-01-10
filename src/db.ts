@@ -25,4 +25,17 @@ export default class DB {
       date: Date.now(),
     });
   }
+
+  public async getTodos(){
+    const todos = [];
+    const cursor = await Todo.find({}).cursor();
+    for (
+      let item = await cursor.next();
+      item !== null;
+      item = await cursor.next()
+    ) {
+      todos.push(item);
+    }
+    return todos;
+  }
 }
