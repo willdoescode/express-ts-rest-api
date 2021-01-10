@@ -19,9 +19,10 @@ export default class DB {
   }
 
   public async addTodo({title, description}: TodoI) {
-    await new Todo({
+    return new Todo({
       title,
       description,
-    }).save();
+      date: Date.now(),
+    });
   }
 }

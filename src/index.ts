@@ -6,7 +6,7 @@ import * as morgan from 'morgan';
 
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 for (const m of [
   cors({origin: '*'}),
   todoRouter,
