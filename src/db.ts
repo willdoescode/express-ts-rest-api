@@ -38,4 +38,7 @@ export default class DB {
     }
     return todos;
   }
+  public async deleteTodo(id: string) {
+    await Todo.deleteOne({_id: id});
+  }
 }

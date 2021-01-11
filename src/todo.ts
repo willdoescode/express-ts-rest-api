@@ -34,9 +34,22 @@ router.post('/api/todo', (req, res) => {
   });
 });
 
-router.delete('/api/todo', (req, res) => {
-  res.status(200);
-  res.send('ok');
+router.post('/api/todo/delete', (req, res) => {
+  if (req.body.id) {
+    db.deleteTodo(req.body.id)
+      .then(() => {
+        console.log(`Deleted Todo`);
+        res.status(200);
+      })
+      .catch(e => {
+        console.log(e);
+        res.status(204);
+        return;
+      });
+  } else {
+    res.status(204);
+    return;
+  }
 });
 
 export {router as todoRouter};
